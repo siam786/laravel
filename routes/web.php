@@ -47,9 +47,11 @@ Route::get('/service-page', function () {
 Route::get('/contact-us', function () {
 
     $contact_page="Contact US";
-    $contact_info="01742080475";
+    $product_count = 5;
+    $color='white';
+    $products=[];
 
-    return view('contact',compact('contact_page','contact_info'));
+    return view('contact',compact('contact_page','product_count','color'));
 })->name('contact');
 
 // Route::get('/user/{id}/{name}', function ($id, $name) {
