@@ -28,3 +28,12 @@ Route::get('/service-page/{service_id?}/{company_name?}', function ($service_id=
 Route::get('/contact-us', function () {
     return view('contact');
 })->name('contact');
+
+Route::get('/user/{id}/{name}',function($id,$name){
+   echo  $id,$name;
+})->where(['id'=>'[0-9]+','name','[A-Za-z]+']);
+
+Route::get('/category/{category_name}',function($category_name){
+   
+    echo $category_name;
+})->whereIn('category_name',['tv','mobile','laptop']);
