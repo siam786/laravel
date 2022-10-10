@@ -18,28 +18,48 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', function () {
-    return view('home');
+    return view('home',[
+        'home_page'=>'Home Page',
+        'name'=>'Laravel 9 Master Course'
+    ]);
 })->name('home');
 
-Route::get('/service-page/{service_id?}/{company_name?}', function (
-    $service_id = null,
-    $company_name = null
-) {
-    return 'Service' . $service_id . '' . $company_name;
+// Route::get('/service-page/{service_id?}/{company_name?}', function (
+//     $service_id = null,
+//     $company_name = null
+// ) {
+//     return 'Service' . $service_id . '' . $company_name;
+// })->name('service');
+
+Route::get('/service-page', function () {
+    $services_page = "Service Page";
+    $services = [
+        'Web Design',
+        'Web Development',
+        'Mobile App Development',
+        'Software Development',
+        'App Development'
+    ];
+
+    return view('service',compact('services','services_page'));
 })->name('service');
 
 Route::get('/contact-us', function () {
-    return view('contact');
+
+    $contact_page="Contact US";
+    $contact_info="01742080475";
+
+    return view('contact',compact('contact_page','contact_info'));
 })->name('contact');
 
-Route::get('/user/{id}/{name}', function ($id, $name) {
-    echo $id, $name;
-})->where(['id' => '[0-9]+', 'name', '[A-Za-z]+']);
+// Route::get('/user/{id}/{name}', function ($id, $name) {
+//     echo $id, $name;
+// })->where(['id' => '[0-9]+', 'name', '[A-Za-z]+']);
 
-Route::get('/category/{category_name}', function ($category_name) {
-    echo $category_name;
-})->whereIn('category_name', ['tv', 'mobile', 'laptop']);
+// Route::get('/category/{category_name}', function ($category_name) {
+//     echo $category_name;
+// })->whereIn('category_name', ['tv', 'mobile', 'laptop']);
 
-Route::get('/search/{name}',function($name){
-  echo   $name;
-})->where('name','.*');
+// Route::get('/search/{name}',function($name){
+//   echo   $name;
+// })->where('name','.*');
