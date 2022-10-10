@@ -49,9 +49,26 @@ Route::get('/contact-us', function () {
     $contact_page="Contact US";
     $product_count = 5;
     $color='white';
-    $products=[];
+    $products=[
+        1=>[
+            'name'=>'Bag',
+            'color'=>'red',
+            'price'=>'1250'
+        ],
+        2=>[
+            'name'=>'Samsung',
+            'color'=>'yellow',
+            'price'=>'1550'
+        ],
+        3=>[
+            'name'=>'watch',
+            'color'=>'white',
+            'price'=>'250'
+        ],
 
-    return view('contact',compact('contact_page','product_count','color'));
+    ];
+
+    return view('contact',compact('contact_page','product_count','color','products'));
 })->name('contact');
 
 // Route::get('/user/{id}/{name}', function ($id, $name) {

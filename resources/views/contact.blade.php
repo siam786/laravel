@@ -26,15 +26,22 @@
         @break
 
         @default
-        <p>Stock Out</p>
-
+            <p>Stock Out</p>
     @endswitch
 
-    @empty($products)
-    <h5>No Products Founds</h5>
-    @endempty
-
-
+    @forelse ($products as $key => $product)
+        <ul class="">
+            @if ($loop->first)
+            @continue
+            @endif
+            <li>{{ $key }}</li>
+            <li>{{ $product['name'] }}</li>
+            <li>{{ $product['color'] }}</li>
+            <li>{{ $product['price'] }}</li>
+        </ul>
+        @empty
+        <h4>No Product Found!!</h4>
+    @endforelse
 
 
 @endsection
