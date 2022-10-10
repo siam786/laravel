@@ -19,12 +19,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',function(){
    return view('home'); 
-});
+})->name('home');
 
-Route::get('/service',function(){
+Route::get('/service-page',function(){
     return view('service'); 
- });
+ })->name('service');
 
- Route::get('/contact',function(){
+ Route::get('/contact-us',function(){
     return view('contact'); 
- });
+ })->name('contact');
