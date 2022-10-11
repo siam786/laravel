@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', function () {
-    return view('home',[
-        'home_page'=>'Home Page',
-        'name'=>'Laravel 9 Master Course'
+    return view('home', [
+        'home_page' => 'Home Page',
+        'name' => 'Laravel 9 Master Course',
     ]);
 })->name('home');
 
@@ -32,43 +32,44 @@ Route::get('/', function () {
 // })->name('service');
 
 Route::get('/service-page', function () {
-    $services_page = "Service Page";
+    $services_page = 'Service Page';
     $services = [
         'Web Design',
         'Web Development',
         'Mobile App Development',
         'Software Development',
-        'App Development'
+        'App Development',
     ];
 
-    return view('service',compact('services','services_page'));
+    return view('service', compact('services', 'services_page'));
 })->name('service');
 
 Route::get('/contact-us', function () {
-
-    $contact_page="Contact US";
+    $contact_page = 'Contact US';
     $product_count = 5;
-    $color='white';
-    $products=[
-        1=>[
-            'name'=>'Bag',
-            'color'=>'red',
-            'price'=>'1250'
+    $color = 'white';
+    $products = [
+        1 => [
+            'name' => 'Bag',
+            'color' => 'red',
+            'price' => '1250',
         ],
-        2=>[
-            'name'=>'Samsung',
-            'color'=>'yellow',
-            'price'=>'1550'
+        2 => [
+            'name' => 'Samsung',
+            'color' => 'yellow',
+            'price' => '1550',
         ],
-        3=>[
-            'name'=>'watch',
-            'color'=>'white',
-            'price'=>'250'
+        3 => [
+            'name' => 'watch',
+            'color' => 'white',
+            'price' => '250',
         ],
-
     ];
 
-    return view('contact',compact('contact_page','product_count','color','products'));
+    return view(
+        'contact',
+        compact('contact_page', 'product_count', 'color', 'products')
+    );
 })->name('contact');
 
 // Route::get('/user/{id}/{name}', function ($id, $name) {

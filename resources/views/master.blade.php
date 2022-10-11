@@ -1,23 +1,26 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     @include('include.style')
 
-    <title>@yield('content')</title>
-  </head>
-  <body>
-   
+    <title>@yield('title')</title>
+</head>
 
-   @include('include.script')
+<body>
 
-    
+
+    @include('include.script')
+
+
     @include('include.navbar')
-      <div class="container p-4">
-       @yield('content')
-      </div>
-  </body>
+    <div class="container p-4">
+        @yield('content')
+    </div>
+</body>
+
 </html>

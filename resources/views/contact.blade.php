@@ -1,5 +1,6 @@
 @extends('master')
 
+@section('title','Contact-Page')
 @section('content')
     <h1>{{ $contact_page }}</h1>
     @if ($product_count <= 10)
@@ -30,18 +31,8 @@
     @endswitch
 
     @forelse ($products as $key => $product)
-        <ul class="">
-            @if ($loop->first)
-            @continue
-            @endif
-            <li>{{ $key }}</li>
-            <li>{{ $product['name'] }}</li>
-            <li>{{ $product['color'] }}</li>
-            <li>{{ $product['price'] }}</li>
-        </ul>
-        @empty
+        @include('partial.partial')
+    @empty
         <h4>No Product Found!!</h4>
     @endforelse
-
-
 @endsection
