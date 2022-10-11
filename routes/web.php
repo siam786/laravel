@@ -18,11 +18,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', function () {
-    return view('home', [
-        'home_page' => 'Home Page',
-        'name' => 'Laravel 9 Master Course',
-    ]);
+Route::get('/', function (Request $request) {
+    // return view('home',
+
+    //  [
+    //     'home_page' => 'Home Page',
+    //     'name' => 'Laravel 9 Master Course',
+    // ]);
+        $data = [
+            'home_page' => 'Home Page',
+     'name' => 'Laravel 9 Master Course',
+        ];
+    return response ($data)
+    ->header('content-type','application/json')
+     ->cookie('My_idCard','shohrab hossain','01742080475');
+
+
 })->name('home');
 
 Route::get('/service-page/{service_id?}/{company_name?}', function (
