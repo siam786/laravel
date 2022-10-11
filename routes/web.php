@@ -25,13 +25,15 @@ Route::get('/', function (Request $request) {
     //     'home_page' => 'Home Page',
     //     'name' => 'Laravel 9 Master Course',
     // ]);
-        $data = [
-            'home_page' => 'Home Page',
-     'name' => 'Laravel 9 Master Course',
-        ];
-    return response ($data)
-    ->header('content-type','application/json')
-     ->cookie('My_idCard','shohrab hossain','01742080475');
+    //     $data = [
+    //         'home_page' => 'Home Page',
+    //  'name' => 'Laravel 9 Master Course',
+    //     ];
+    // return response ($data)
+    // ->header('content-type','application/json')
+    //  ->cookie('My_idCard','shohrab hossain',3600);
+
+    return redirect('/contact-us');
 
 
 })->name('home');
