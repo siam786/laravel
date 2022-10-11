@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/', function () {
     return view('home', [
@@ -24,12 +25,12 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-// Route::get('/service-page/{service_id?}/{company_name?}', function (
-//     $service_id = null,
-//     $company_name = null
-// ) {
-//     return 'Service' . $service_id . '' . $company_name;
-// })->name('service');
+Route::get('/service-page/{service_id?}/{company_name?}', function (
+    $service_id = null,
+    $company_name = null
+) {
+    return 'Service' . $service_id . '' . $company_name;
+})->name('service');
 
 Route::get('/service-page', function () {
     $services_page = 'Service Page';
@@ -83,3 +84,14 @@ Route::get('/contact-us', function () {
 // Route::get('/search/{name}',function($name){
 //   echo   $name;
 // })->where('name','.*');
+
+// Route::get('/',function(Request $request){
+
+//     dd(
+//         $request->path(),
+//         $request->is('/home'),
+//         $request->fullUrl(),
+//         $request->Host(),
+//     );
+
+// });
