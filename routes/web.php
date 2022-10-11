@@ -19,12 +19,12 @@ Route::get('/', function () {
 });
 
 Route::get('/', function (Request $request) {
-    // return view('home',
+     return view('home',
 
-    //  [
-    //     'home_page' => 'Home Page',
-    //     'name' => 'Laravel 9 Master Course',
-    // ]);
+     [
+        'home_page' => 'Home Page',
+        'name' => 'Laravel 9 Master Course',
+    ]);
     //     $data = [
     //         'home_page' => 'Home Page',
     //  'name' => 'Laravel 9 Master Course',
@@ -33,7 +33,7 @@ Route::get('/', function (Request $request) {
     // ->header('content-type','application/json')
     //  ->cookie('My_idCard','shohrab hossain',3600);
 
-    return redirect('/contact-us');
+    // return redirect('/contact-us');
 
 
 })->name('home');
@@ -60,7 +60,7 @@ Route::get('/service-page', function () {
 
 Route::get('/contact-us', function () {
     $contact_page = 'Contact US';
-    $product_count = 5;
+
     $color = 'white';
     $products = [
         1 => [
@@ -78,12 +78,25 @@ Route::get('/contact-us', function () {
             'color' => 'white',
             'price' => '250',
         ],
+        4 => [
+            'name' => 'laptop',
+            'color' => 'red',
+            'price' => '2250',
+        ],
     ];
+    $product_count = count($products);
+   return response () -> json([
+    'products'=> $products,
+    'product_count'=> $product_count,
+   ],200)
 
-    return view(
-        'contact',
-        compact('contact_page', 'product_count', 'color', 'products')
-    );
+   ->header('content-type','application/json')
+     ->cookie('My_idCard','shohrab hossain',3600);
+
+    // return view(
+    //     'contact',
+    //     compact('contact_page', 'product_count', 'color', 'products')
+    // );
 })->name('contact');
 
 // Route::get('/user/{id}/{name}', function ($id, $name) {
