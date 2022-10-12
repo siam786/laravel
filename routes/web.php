@@ -39,7 +39,11 @@ Route::get('/', function (Request $request) {
     // return redirect('/contact-us');
 
 
-})->name('home');
+})->name('home')->middleware('auth');
+
+Route::get('/login',function(){
+    return  "login";
+})->name('login');
 
 Route::get('/service-page/{service_id?}/{company_name?}', function (
     $service_id = null,
@@ -153,3 +157,32 @@ Route::get('/contact-us', function () {
 //     })->name('service');
 
 // });
+
+
+Route::get('/send-key',function(Request $request){
+
+    $secret_key=5878;
+    $user_key = $request-> user_key;
+
+    $data = [
+        'user_name'=>'siam',
+        'designation'=>'web devloper',
+        'mobile'=>'01742080475',
+        'bac acc'=>'brack0141524',
+    ];
+
+if($secret_key == $user_key) {
+    return response()->json([
+        'user_info' => $data
+    ]);
+}
+else{
+return response([
+    'message'=>'Please Provide valid key'
+],404);
+}
+
+
+
+
+});
