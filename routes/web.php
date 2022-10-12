@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\FrontController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,97 +17,23 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/', function (Request $request) {
-
-    // dd($request->all());
-
-     return view('home',
-
-     [
-        'home_page' => 'Home Page',
-        'name' => 'Laravel 9 Master Course',
-    ]);
-    //     $data = [
-    //         'home_page' => 'Home Page',
-    //  'name' => 'Laravel 9 Master Course',
-    //     ];
-    // return response ($data)
-    // ->header('content-type','application/json')
-    //  ->cookie('My_idCard','shohrab hossain',3600);
-
-    // return redirect('/contact-us');
 
 
-})->name('home')->middleware('auth');
+Route::get('/', [FrontController::class,'home'])->name('home');
 
-Route::get('/login',function(){
-    return  "login";
-})->name('login');
 
-Route::get('/service-page/{service_id?}/{company_name?}', function (
-    $service_id = null,
-    $company_name = null
-) {
-    return 'Service' . $service_id . '' . $company_name;
-})->name('service');
 
-Route::get('/service-page', function () {
-    $services_page = 'Service Page';
-    $services = [
-        'Web Design',
-        'Web Development',
-        'Mobile App Development',
-        'Software Development',
-        'App Development',
-    ];
 
-    return view('service', compact('services', 'services_page'));
-})->name('service');
+// Route::get('/service-page/{service_id?}/{company_name?}', function (
+//     $service_id = null,
+//     $company_name = null
+// ) {
+//     return 'Service' . $service_id . '' . $company_name;
+// })->name('service');
 
-Route::get('/contact-us', function () {
-    $contact_page = 'Contact US';
+Route::get('/service-page', [FrontController::class,'service'])->name('service');
 
-    $color = 'white';
-    $products = [
-        1 => [
-            'name' => 'Bag',
-            'color' => 'red',
-            'price' => '1250',
-        ],
-        2 => [
-            'name' => 'Samsung',
-            'color' => 'yellow',
-            'price' => '1550',
-        ],
-        3 => [
-            'name' => 'watch',
-            'color' => 'white',
-            'price' => '250',
-        ],
-        4 => [
-            'name' => 'laptop',
-            'color' => 'red',
-            'price' => '2250',
-        ],
-    ];
-    $product_count = count($products);
-   return response ( ) -> json([
-    'products'=> $products,
-    'product_count'=> $product_count,
-   ],200)
-
-   ->header('content-type','application/json')
-     ->cookie('My_idCard','shohrab hossain',3600);
-
-    // return view(
-    //     'contact',
-    //     compact('contact_page', 'product_count', 'color', 'products')
-    // );
-})->name('contact');
+Route::get('/contact-us', [FrontController::class,'contact'])->name('contact');
 
 // Route::get('/user/{id}/{name}', function ($id, $name) {
 //     echo $id, $name;
@@ -129,10 +58,8 @@ Route::get('/contact-us', function () {
 
 // });
 
-
 // grouping route
 // Route::prefix('page')->name('laravel.')->group(function(){
-
 
 //     Route::get('/home',function(){
 //         return view ('home');
@@ -141,7 +68,6 @@ Route::get('/contact-us', function () {
 //     Route::get('/contact',function(){
 //         return view ('contact');
 //     })->name('contact');
-
 
 //     Route::get('/service-page', function () {
 //         $services_page = 'Service Page';
@@ -158,31 +84,4 @@ Route::get('/contact-us', function () {
 
 // });
 
-
-Route::get('/send-key',function(Request $request){
-
-    $secret_key=5878;
-    $user_key = $request-> user_key;
-
-    $data = [
-        'user_name'=>'siam',
-        'designation'=>'web devloper',
-        'mobile'=>'01742080475',
-        'bac acc'=>'brack0141524',
-    ];
-
-if($secret_key == $user_key) {
-    return response()->json([
-        'user_info' => $data
-    ]);
-}
-else{
-return response([
-    'message'=>'Please Provide valid key'
-],404);
-}
-
-
-
-
-});
+Route::get('/send-key', [FrontController::class,'sendMeDetails'])->name('sendmedetails');
