@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\UserController;
 
 
 
@@ -84,4 +85,4 @@ Route::get('/contact-us', [FrontController::class,'contact'])->name('contact');
 
 // });
 
-Route::get('/send-key', [FrontController::class,'sendMeDetails'])->name('sendmedetails');
+Route::get('/send-key', UserController::class);
