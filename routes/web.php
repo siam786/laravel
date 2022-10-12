@@ -85,7 +85,7 @@ Route::get('/contact-us', function () {
         ],
     ];
     $product_count = count($products);
-   return response () -> json([
+   return response ( ) -> json([
     'products'=> $products,
     'product_count'=> $product_count,
    ],200)
@@ -119,5 +119,34 @@ Route::get('/contact-us', function () {
 //         $request->fullUrl(),
 //         $request->Host(),
 //     );
+
+// });
+
+
+// grouping route
+// Route::prefix('page')->name('laravel.')->group(function(){
+
+
+//     Route::get('/home',function(){
+//         return view ('home');
+//     })->name('home');
+
+//     Route::get('/contact',function(){
+//         return view ('contact');
+//     })->name('contact');
+
+
+//     Route::get('/service-page', function () {
+//         $services_page = 'Service Page';
+//         $services = [
+//             'Web Design',
+//             'Web Development',
+//             'Mobile App Development',
+//             'Software Development',
+//             'App Development',
+//         ];
+
+//         return view('service', compact('services', 'services_page'));
+//     })->name('service');
 
 // });
