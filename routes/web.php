@@ -85,4 +85,4 @@ Route::get('/contact-us', [FrontController::class,'contact'])->name('contact');
 
 // });
 
-Route::get('/send-key', UserController::class);
+Route::get('/send-key', [FrontController::class,'sendMeDetails'])->name('sendmedetails');
