@@ -97,5 +97,5 @@ class FrontController extends Controller
                 404
             );
         }
-    }
+    
 }
