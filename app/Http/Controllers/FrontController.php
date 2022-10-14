@@ -16,7 +16,7 @@ class FrontController extends Controller
     public function home()
     {
         $users = User::where('created_at','<=',now())->get();
-      
+
         return view(
             'home',
 
@@ -82,17 +82,8 @@ class FrontController extends Controller
         ->cookie('My_idCard', 'shohrab hossain', 3600);
     }
 
-    public function sendMeDetails(Request $request)
-    {
-        $secret_key = 5878;
-        $user_key = $request->user_key;
 
-        $data = [
-            'user_name' => 'siam',
-            'designation' => 'web devloper',
-            'mobile' => '01742080475',
-            'bac acc' => 'brack0141524',
-        ];
+}
 
         if ($secret_key == $user_key) {
             return response()->json([
@@ -107,12 +98,4 @@ class FrontController extends Controller
             );
         }
     }
-
-    // public function userIndex(){
-    //     $user = User::all();
-
-    //     return view('home',[
-    //         'users'=>$user
-    //     ]);
-    // }
 }
