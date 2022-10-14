@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 
@@ -14,12 +15,15 @@ class FrontController extends Controller
 
     public function home()
     {
+        $users = User::where('created_at','<=',now())->get();
+      
         return view(
             'home',
 
             [
                 'home_page' => 'Home Page',
                 'name' => 'Laravel 9 Master Course for you',
+                'users' =>$users
             ]
         );
     }
@@ -103,4 +107,12 @@ class FrontController extends Controller
             );
         }
     }
+
+    // public function userIndex(){
+    //     $user = User::all();
+
+    //     return view('home',[
+    //         'users'=>$user
+    //     ]);
+    // }
 }
