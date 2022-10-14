@@ -83,19 +83,16 @@ class FrontController extends Controller
     }
 
 
-}
-
-        if ($secret_key == $user_key) {
-            return response()->json([
-                'user_info' => $data,
-            ]);
-        } else {
-            return response(
-                [
-                    'message' => 'Please Provide valid key',
-                ],
-                404
-            );
-        }
-    
+    // if ($secret_key == $user_key) {
+    //     return response()->json([
+    //         'user_info' => $data,
+    //     ]);
+    // } else {
+    //     return response(
+    //         [
+    //             'message' => 'Please Provide valid key',
+    //         ],
+    //         404
+    //     );
+    // }
 }
