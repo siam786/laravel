@@ -8,14 +8,29 @@
             @csrf
             <div class="mb-3">
                 <label for="category-name" class="form-label">Enter Category Name</label>
-                <input type="text" class="form-control" id="category-name" name="category_name"
-                    placeholder="Please Provide Category Name">
+                <input type="text" class="form-control
+                @error('category_name')
+                is-invalid
+                @enderror" id="category-name" name="category_name" placeholder="Please Provide Category Name">
+
+                @error('category_name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
 
             </div>
             <div class="mb-3">
                 <label for="slug-name" class="form-label">Enter Slug Name</label>
-                <input type="text" name="category_slug" class="form-control" id="slug-name"
+                <input type="text" name="category_slug" class="form-control @error('category_slug')
+                is-invalid
+                @enderror" id="slug-name"
                     placeholder="Please Provide Slug Name">
+                @error('category_slug')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
 
             </div>
 
