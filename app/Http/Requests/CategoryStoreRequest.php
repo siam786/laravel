@@ -25,7 +25,6 @@ class CategoryStoreRequest extends FormRequest
     {
         return [
             'category_name'=>'required|string|alpha',
-            'category_slug'=>'required|string|alpha',
             'category_checkbox'=>'nullable',
         ];
     }
