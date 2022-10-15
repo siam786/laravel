@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\FrontController;
@@ -86,3 +87,4 @@ Route::get('/contact-us', [FrontController::class,'contact'])->name('contact');
 // });
 
 Route::get('/send-key', [FrontController::class,'sendMeDetails'])->name('sendmedetails');
+Route::resource('/category', CategoryController::class);
