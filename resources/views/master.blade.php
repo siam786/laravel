@@ -19,6 +19,11 @@
 
     @include('include.navbar')
     <div class="container p-4">
+        @if (session('status'))
+    <div class=" bg-success text-white p-2 m-2">
+        {{ session('status') }}
+    </div>
+    @endif
         @yield('content')
     </div>
 </body>

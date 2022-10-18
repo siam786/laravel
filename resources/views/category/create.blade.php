@@ -4,12 +4,7 @@
 <h1>Category Page</h1>
 <div class="row">
     <div class="col-md-8 m-auto">
-        @if (session('status'))
-        <div class="bg-success text-white p-2 m-2">
-            {{ session('status') }}
-        </div>
-
-        @endif
+        
         <form action="{{ route('category.store') }}" method="POST">
             @csrf
             <div class="mb-3">
@@ -17,7 +12,8 @@
                 <input type="text" class="form-control
                 @error('category_name')
                 is-invalid
-                @enderror" id="category-name" name="category_name" placeholder="Please Provide Category Name">
+                @enderror" id="category-name" name="category_name" placeholder="Please Provide Category Name"
+                    value="{{ old('category_name') }}">
                 @error('category_name')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
