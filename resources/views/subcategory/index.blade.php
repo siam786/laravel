@@ -3,6 +3,9 @@
 @section('content')
 <h1>SubCategory Index Page</h1>
 <div class="row">
+    <div class="d-flex justify-content-end">
+        <a href="{{ route('subcategory.create') }}" class="btn btn-success">Create Sub Category</a>
+    </div>
     <div class="col-8 m-auto">
         <table class="table">
             <thead>
@@ -19,7 +22,7 @@
                     <th scope="row">{{ $subcategory->id }}</th>
                     <td>{{ $subcategory->category->name }}</td>
                     <td>{{$subcategory->name }}</td>
-                    <td>{{$subcategory->created_at->diffForHumans()  }}</td>
+                    <td>{{$subcategory->created_at->diffForHumans() }}</td>
                 </tr>
                 @endforeach
             </tbody>

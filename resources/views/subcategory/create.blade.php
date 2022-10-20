@@ -3,8 +3,11 @@
 @section('content')
 <h1>Sub Category Page</h1>
 <div class="row">
-    <div class="col-md-8 m-auto">
-
+    <div class="d-flex justify-content-start">
+        <a href="{{ route('subcategory.index') }}" class="btn btn-success">View Sub Category</a>
+    </div>
+    <div class="col-md-6 m-auto">
+        <div class="card py-4 px-4">
         <form action="{{ route('subcategory.store') }}" method="POST">
             @csrf
             <div class="mb-3">
@@ -44,8 +47,9 @@
                 <input type="checkbox" name="subcategory_checkbox" class="form-check-input" id="subcategoryslug">
                 <label class="form-check-label" for="subcategoryslug">Active/Inactive</label>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-success">Submit</button>
         </form>
+    </div>
     </div>
 </div>
 
