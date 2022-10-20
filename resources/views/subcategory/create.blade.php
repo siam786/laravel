@@ -8,7 +8,9 @@
         <form action="{{ route('subcategory.store') }}" method="POST">
             @csrf
             <div class="mb-3">
-                <select class="form-select" aria-label="Default select example" name="category_id">
+                <select class="form-select @error('category_id')
+                is-invalid
+                @enderror" name="category_id">
                     <option selected>Open this Sub Category Name</option>
                     @foreach ($categories as $category )
 
@@ -16,6 +18,12 @@
                     @endforeach
 
                   </select>
+
+                  @error('category_id')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="subcategory-name" class="form-label">Enter SubCategory Name</label>

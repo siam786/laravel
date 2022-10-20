@@ -12,11 +12,7 @@
 </head>
 
 <body>
-
-
     @include('include.script')
-
-
     @include('include.navbar')
     <div class="container p-4">
         @if (session('status'))
