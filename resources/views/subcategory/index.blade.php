@@ -25,7 +25,13 @@
                     <td>{{$subcategory->name }}</td>
                     <td>{{$subcategory->created_at->diffForHumans() }}</td>
                     <td>
-                        <a href="{{ route('subcategory.edit',['subcategory'=>$subcategory->id]) }}" class="btn btn-info">Edit</a>
+                        <a href="{{ route('subcategory.edit',['subcategory'=>$subcategory->id]) }}"
+                            class="btn btn-info">Edit</a>
+                        <form action="{{ route('subcategory.destroy',['subcategory'=>$subcategory->id]) }}" method="post">
+                            @method('DELETE')
+                            @csrf
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

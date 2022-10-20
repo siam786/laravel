@@ -19,9 +19,14 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        $subcategories = SubCategory::with(['category'])->get(['id','name','category_id','created_at']);
+        $subcategories = SubCategory::with(['category'])->get([
+            'id',
+            'name',
+            'category_id',
+            'created_at',
+        ]);
         // return $subcategories;
-        return view('subcategory.index',compact('subcategories'));
+        return view('subcategory.index', compact('subcategories'));
     }
 
     /**
@@ -30,10 +35,10 @@ class SubCategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+    {
+        $categories = Category::get(['id', 'name']);
 
-    {   $categories = Category::get(['id','name']);
-
-        return view('subcategory.create',compact('categories'));
+        return view('subcategory.create', compact('categories'));
     }
 
     /**
@@ -46,12 +51,12 @@ class SubCategoryController extends Controller
     {
         //   dd($request->all());
         SubCategory::create([
-            'category_id'=>$request->category_id,
-            'name'=>$request->subcategory_name,
-            'slug'=>Str::slug($request->subcategory_name),
-            'is_active'=>$request->filled('subcategory_checkbox'),
+            'category_id' => $request->category_id,
+            'name' => $request->subcategory_name,
+            'slug' => Str::slug($request->subcategory_name),
+            'is_active' => $request->filled('subcategory_checkbox'),
         ]);
-        Session::flash('status','Sub Category created Successfully');
+        Session::flash('status', 'Sub Category created Successfully');
 
         return redirect()->route('subcategory.index');
     }
@@ -65,8 +70,8 @@ class SubCategoryController extends Controller
     public function show($id)
     {
         $subcategory = SubCategory::find($id);
-        
-        return view('subcategory.show',compact('subcategory'));
+
+        return view('subcategory.show', compact('subcategory'));
     }
 
     /**
@@ -78,10 +83,9 @@ class SubCategoryController extends Controller
     public function edit($id)
     {
         // dd($id);
-        {   $categories = Category::get(['id','name']);
-            $subcategory = SubCategory::find($id);
-            return view('subcategory.edit',compact('categories','subcategory'));
-        }
+        $categories = Category::get(['id', 'name']);
+        $subcategory = SubCategory::find($id);
+        return view('subcategory.edit', compact('categories', 'subcategory'));
     }
 
     /**
@@ -96,12 +100,12 @@ class SubCategoryController extends Controller
         // dd($request->all());
         $subcategory = SubCategory::find($id);
         $subcategory->update([
-            'category_id'=>$request->category_id,
-            'name'=>$request->subcategory_name,
-            'slug'=>Str::slug($request->subcategory_name),
-            'is_active'=>$request->filled('subcategory_checkbox'),
+            'category_id' => $request->category_id,
+            'name' => $request->subcategory_name,
+            'slug' => Str::slug($request->subcategory_name),
+            'is_active' => $request->filled('subcategory_checkbox'),
         ]);
-        Session::flash('status','Sub Category Edit Successfully');
+        Session::flash('status', 'Sub Category Edit Successfully');
 
         return redirect()->route('subcategory.index');
     }
@@ -114,6 +118,9 @@ class SubCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // dd($id);
+        SubCategory::find($id)->delete();
+        Session::flash('status', 'SubCategory Delete Successfully');
+        return redirect()->route('subcategory.index');
     }
 }
