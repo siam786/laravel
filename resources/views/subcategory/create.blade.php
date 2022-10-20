@@ -24,7 +24,7 @@
 
                   @error('category_id')
                 <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
+                    <strong>{{ 'Please Select Category Name' }}</strong>
                 </span>
                 @enderror
             </div>
