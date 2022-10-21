@@ -14,7 +14,7 @@
                     <th scope="col">Category Name</th>
                     <th scope="col">SubCategory Name</th>
                     <th scope="col">Created Date</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,13 +25,18 @@
                     <td>{{$subcategory->name }}</td>
                     <td>{{$subcategory->created_at->diffForHumans() }}</td>
                     <td>
-                        <a href="{{ route('subcategory.edit',['subcategory'=>$subcategory->id]) }}"
-                            class="btn btn-info">Edit</a>
-                        <form action="{{ route('subcategory.destroy',['subcategory'=>$subcategory->id]) }}" method="post">
-                            @method('DELETE')
-                            @csrf
-                            <button class="btn btn-danger">Delete</button>
-                        </form>
+                        <div class="d-flex justify-content-between">
+                            <a href="{{ route('subcategory.show',['subcategory'=>$subcategory->id]) }}"
+                                class="btn btn-primary">Show</a>
+                            <a href="{{ route('subcategory.edit',['subcategory'=>$subcategory->id]) }}"
+                                class="btn btn-info">Edit</a>
+                            <form action="{{ route('subcategory.destroy',['subcategory'=>$subcategory->id]) }}"
+                                method="post">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit" class="btn btn-danger show_confirm" data-toggle="tooltip" title='Delete'>Delete</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
                 @endforeach
@@ -40,3 +45,6 @@
     </div>
 </div>
 @endsection
+
+
+

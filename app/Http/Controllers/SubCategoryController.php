@@ -123,7 +123,8 @@ class SubCategoryController extends Controller
     {
         // dd($id);
         SubCategory::find($id)->delete();
-        Session::flash('status', 'SubCategory Delete Successfully');
+        // Session::flash('status', 'SubCategory Delete Successfully');
+        Toastr::warning('SubCategory Delete Successfully');
         return redirect()->route('subcategory.index');
     }
 }
