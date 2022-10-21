@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\CategoryStoreRequest;
 
@@ -44,7 +45,8 @@ class CategoryController extends Controller
             'slug' => Str::slug($request->category_name),
             'is_active' => $request->filled('category_checkbox'),
         ]);
-        Session::flash('status','Category Created Successfully');
+        // Session::flash('status','Category Created Successfully');
+        Toastr::success('Category Created Successfully');
         return back();
     }
 
