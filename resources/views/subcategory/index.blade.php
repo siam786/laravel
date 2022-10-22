@@ -29,6 +29,7 @@
                             <a href="{{ route('subcategory.show',['subcategory'=>$subcategory->id]) }}"
                                 class="btn btn-primary">Show</a>
                             <a href="{{ route('subcategory.edit',['subcategory'=>$subcategory->id]) }}"
+                            <a href="{{ route('subcategory.edit',['subcategory'=>$subcategory->id]) }}"
                                 class="btn btn-info">Edit</a>
                             <form action="{{ route('subcategory.destroy',['subcategory'=>$subcategory->id]) }}"
                                 method="post">
