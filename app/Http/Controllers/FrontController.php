@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\NidCard;
 use App\Models\SubCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,14 +17,15 @@ class FrontController extends Controller
 
     public function home()
     {
-        $users = User::where('created_at','<=',now())->get();
+        // $users = User::where('created_at','<=',now())->get();
+       $users = User::with('nidcard')->get();
         $subCategory = subCategory::all();
 
         return view(
             'home',
 
             [
-                'home_page' => 'Home Page',
+                'home_page' => 'Home Pagesss',
                 'name' => 'Laravel 9 Master Course for you',
                 'users' =>$users,
                 'subCategory'=>$subCategory
