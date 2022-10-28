@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -19,6 +18,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $category = Category::get(['id', 'name', 'slug', 'created_at']);
+        // return $category;
+         return view('category.index',compact('category'));
     }
 
     /**
@@ -39,7 +41,7 @@ class CategoryController extends Controller
      */
     public function store(CategoryStoreRequest $request)
     {
-
+        // dd($request->all());
         Category::create([
             'name' => $request->category_name,
             'slug' => Str::slug($request->category_name),
@@ -47,7 +49,7 @@ class CategoryController extends Controller
         ]);
         // Session::flash('status','Category Created Successfully');
         Toastr::success('Category Created Successfully');
-        return back();
+        return redirect()->route('category.index');
     }
 
     /**
@@ -58,7 +60,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = Category::find($id);
+        return view('category.show',compact('category'));
     }
 
     /**
@@ -69,7 +72,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        return view('category.edit',compact('category'));
     }
 
     /**
@@ -79,9 +83,17 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryStoreRequest $request, $id)
     {
-        //
+        $category = Category::find($id);
+        $category->update([
+            'name' => $request->category_name,
+            'slug' => Str::slug($request->category_name),
+            'is_active' => $request->filled('category_checkbox'),
+        ]);
+
+        Toastr::info('Category Edit Successfully');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -92,6 +104,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::find($id)->delete();
+        Toastr::warning('Category Delete Successfully');
+        return redirect()->route('category.index');
+
     }
 }
