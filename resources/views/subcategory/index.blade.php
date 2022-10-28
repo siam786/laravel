@@ -7,7 +7,7 @@
         <a href="{{ route('subcategory.create') }}" class="btn btn-success">Create Sub Category</a>
     </div>
     <div class="col-8 m-auto">
-        <table class="table">
+        <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
                     <th scope="col">#</th>

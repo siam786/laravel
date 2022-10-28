@@ -18,9 +18,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::get(['id', 'name', 'slug', 'created_at']);
+        //$category = Category::paginate(['id', 'name', 'slug', 'created_at']);
+        $category = Category::paginate(8);
         // return $category;
-         return view('category.index',compact('category'));
+        return view('category.index', compact('category'));
     }
 
     /**
@@ -61,7 +62,7 @@ class CategoryController extends Controller
     public function show($id)
     {
         $category = Category::find($id);
-        return view('category.show',compact('category'));
+        return view('category.show', compact('category'));
     }
 
     /**
@@ -73,7 +74,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);
-        return view('category.edit',compact('category'));
+        return view('category.edit', compact('category'));
     }
 
     /**
@@ -107,6 +108,5 @@ class CategoryController extends Controller
         Category::find($id)->delete();
         Toastr::warning('Category Delete Successfully');
         return redirect()->route('category.index');
-
     }
 }

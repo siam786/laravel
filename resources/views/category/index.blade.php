@@ -7,7 +7,7 @@
         <a href="{{ route('category.create') }}" class="btn btn-success">Create Category</a>
     </div>
     <div class="col-8 m-auto">
-        <table class="table">
+        <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -42,6 +42,11 @@
                 @endforeach
             </tbody>
         </table>
+
+    </div>
+    <div class="d-flex justify-content-center">
+        {{-- { !! $category->links() !! } --}}
+        {{ $category->links()}}
     </div>
 </div>
 @endsection
