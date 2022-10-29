@@ -18,8 +18,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //$category = Category::paginate(['id', 'name', 'slug', 'created_at']);
-        $category = Category::paginate(8);
+        $category = Category::get(['id', 'name', 'slug', 'created_at']);
+       // $category = Category::paginate(8);
         // return $category;
         return view('category.index', compact('category'));
     }

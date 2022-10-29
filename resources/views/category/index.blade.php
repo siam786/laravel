@@ -44,9 +44,6 @@
         </table>
 
     </div>
-    <div class="d-flex justify-content-center">
-        {{-- { !! $category->links() !! } --}}
-        {{ $category->links()}}
-    </div>
+    
 </div>
 @endsection
