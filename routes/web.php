@@ -91,3 +91,4 @@ Route::get('/contact-us', [FrontController::class,'contact'])->name('contact');
 Route::get('/send-key', [FrontController::class,'sendMeDetails'])->name('sendmedetails');
 Route::resource('/category', CategoryController::class);
 Route::resource('/subcategory',SubCategoryController::class);
+Route::get('/books',[FrontController::class,'books']);

@@ -23,7 +23,7 @@
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
             <td>{{ $user->phone }}</td>
-            <td>{{ $user->nidcard->card_number ?? ''  }}</td>
+            <td>{{ $user->nidcard->card_number ?? '' }}</td>
             <td>{{ $user->created_at }}</td>
         </tr>
         @endforeach

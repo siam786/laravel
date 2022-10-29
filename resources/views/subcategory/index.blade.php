@@ -1,7 +1,7 @@
 @extends('master')
 @section('title','Category-Index-Page')
 @section('content')
-<h1>SubCategory Index Page with vite</h1>
+<h1>SubCategory Index Page</h1>
 <div class="row">
     <div class="d-flex justify-content-end">
         <a href="{{ route('subcategory.create') }}" class="btn btn-success">Create Sub Category</a>
@@ -21,7 +21,7 @@
                 @foreach ($subcategories as $subcategory )
                 <tr>
                     <th scope="row">{{ $subcategory->id }}</th>
-                    <td>{{ $subcategory->category->name }}</td>
+                    <td>{{ $subcategory->category->name}}</td>
                     <td>{{$subcategory->name }}</td>
                     <td>{{$subcategory->created_at->diffForHumans() }}</td>
                     <td>
