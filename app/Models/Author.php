@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Author extends Model
 {
     use HasFactory;
-    protected $guarded = ['id'];
-    public function book()
+
+    public function Book()
     {
         return $this->hasMany(Book::class);
     }

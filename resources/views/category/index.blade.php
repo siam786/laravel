@@ -44,7 +44,7 @@
                 @endforeach
             </tbody>
         </table>
-
+        {{-- {{ var_dumb($category->links()) }} --}}
     </div>
 
 </div>

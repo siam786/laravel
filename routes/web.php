@@ -92,3 +92,4 @@ Route::get('/send-key', [FrontController::class,'sendMeDetails'])->name('sendmed
 Route::resource('/category', CategoryController::class);
 Route::resource('/subcategory',SubCategoryController::class);
 Route::get('/books',[FrontController::class,'books']);
+Route::get('/nid',[FrontController::class,'nid']);

@@ -105,4 +105,9 @@ class FrontController extends Controller
         $books = Book::all();
         return $books;
     }
+    public function nid()
+    {
+        $nid = NidCard::all();
+        return $nid;
+    }
 }
