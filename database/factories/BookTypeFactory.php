@@ -17,7 +17,7 @@ class BookTypeFactory extends Factory
     public function definition()
     {
         return [
-            'type'=>$this->faker->title
+            'type'=>$this->faker->sentence()
         ];
     }
 }

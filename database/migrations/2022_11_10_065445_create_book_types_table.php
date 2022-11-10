@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('books', function (Blueprint $table) {
+        Schema::create('book_types', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('book_tyoe_id')->constrained('book_tyoes');
-            $table->foreignId('publisher_id')->constrained('publisher');
-            $table->string('title');
-            $table->unsignedInteger('no_pages');
-            $table->unsignedInteger('publishing_year');
+            $table->string('type');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('books');
+        Schema::dropIfExists('book_types');
     }
 };
