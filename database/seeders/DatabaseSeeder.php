@@ -3,7 +3,17 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+
 use Illuminate\Database\Seeder;
+use Database\Seeders\BookSeeder;
+use Database\Seeders\PostSeeder;
+use Database\Seeders\UserSeeder;
+use Database\Seeders\AuthorSeeder;
+use Database\Seeders\NidCardSeeder;
+use Database\Seeders\BookTypeSeeder;
+use Database\Seeders\PublisherSeeder;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,5 +30,30 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-    }
+
+        // User::create([
+        //     'name' => 'customers',
+        //     'email' => 'customers@gmail.com',
+        //     'email_verified_at' => now(),
+        //     'password' => Hash::make('12347878'),// password
+        //     'remember_token' => Str::random(10),
+        //     'phone' => '01742080498',
+        // ]);
+
+        // Book::factory(20)->create();
+            $this->call([
+                AuthorSeeder::class,
+                BookTypeSeeder::class,
+                NidCardSeeder::class,
+                PostSeeder::class,
+                PublisherSeeder::class,
+                UserSeeder::class,
+                BookSeeder::class,
+            ]);
+
+
+
+
+
+     }
 }
