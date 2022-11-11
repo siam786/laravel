@@ -103,11 +103,13 @@ class FrontController extends Controller
     public function books()
     {
         $books = Book::all();
-        return $books;
+        // return view('book',compact('books'));
+        return view('books', compact('books'));
     }
     public function nid()
     {
         $nid = NidCard::all();
         return $nid;
     }
+
 }
