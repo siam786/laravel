@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -18,10 +19,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::withCount('subcategories')->get(['id', 'name', 'slug', 'created_at']);
-       //$category = Category::paginate(5);
-        // return $category;
-        return view('category.index', compact('category'));
+//  $categories = Category::withCount('subcategories')->select(['id', 'name', 'slug', 'created_at'])->paginate(10);
+
+       $page = Category::latest('id')->select(['id','name','slug','created_at'])->paginate(10);
+    //    dd($category);
+        // return response()->json($categories);
+        return view('category.index', compact('page'));
     }
 
     /**

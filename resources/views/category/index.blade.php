@@ -19,7 +19,8 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($category as $category)
+                @foreach ($page as $category)
+
                 <tr>
                     <th scope="row">{{ $category->id }}</th>
                     <td>{{ $category->name }}</td>
@@ -44,8 +45,13 @@
                 @endforeach
             </tbody>
         </table>
-        {{-- {{ var_dumb($category->links()) }} --}}
     </div>
 
+
+    <div class="w-100" style=" z-index: 0;">
+        <div class=" d-flex justify-content-center pt-2">
+            {{ $page->links() }}
+        </div>
+    </div>
 </div>
 @endsection
