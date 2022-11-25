@@ -18,14 +18,14 @@ class FrontController extends Controller
     public function home()
     {
         // $users = User::where('created_at','<=',now())->get();
-        $users = User::with('nidcard')->get();
+        $users = User::with('nidcard')->select(['id','name','email','created_at','phone'])->paginate(10);
         $subCategory = subCategory::all();
 
         return view(
             'home',
 
             [
-                'home_page' => 'Home Pagesss',
+                'home_page' => 'Home Page',
                 'name' => 'Laravel 9 Master Course for you',
                 'users' => $users,
                 'subCategory' => $subCategory,
@@ -102,7 +102,7 @@ class FrontController extends Controller
 
     public function books()
     {
-        $books = Book::all();
+        $books = Book::select()->paginate(5);
         // return view('book',compact('books'));
         return view('books', compact('books'));
     }

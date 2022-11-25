@@ -17,7 +17,10 @@ return new class extends Migration
             $table->id();
             $table->String('name');
             $table->String('slug');
-            $table->String('price');
+            $table->foreignId('category_id')->constrained('categories');
+            $table->foreignId('subcategory_id')->constrained('sub_categories');
+            $table->longText('description')->nullable();
+            $table->unsignedInteger('price')->default(0);
             $table->String('color');
             $table->timestamps();
         });

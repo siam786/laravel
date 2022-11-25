@@ -34,25 +34,25 @@
 
 <table class="table">
     <thead class="thead-dark">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Sub Category ID</th>
-        <th scope="col">Name</th>
-        <th scope="col">Created at</th>
-      </tr>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Sub Category ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Created at</th>
+        </tr>
     </thead>
     <tbody>
         @foreach ($subCategory as $subCategory)
 
         <tr>
-          <th scope="row">1</th>
-          <td>{{ $subCategory->id }}</td>
-          <td>{{  $subCategory->name}}</td>
-          <td>{{ $subCategory->created_at }}</td>
+            <th scope="row">{{ $subCategory->id }}</th>
+            <td>{{ $subCategory->id }}</td>
+            <td>{{ $subCategory->name}}</td>
+            <td>{{ $subCategory->created_at }}</td>
         </tr>
 
-
         @endforeach
+        {{ $users->links() }}
     </tbody>
 </table>
 @endsection

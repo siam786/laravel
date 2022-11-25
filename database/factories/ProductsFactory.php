@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
+use App\Models\SubCategory;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,7 +22,10 @@ class ProductsFactory extends Factory
         return [
             'name'=>$this->faker->sentence(),
             'slug'=>Str::slug($product_slug),
+            'category_id'=>Category::select('id')->get()->random()->id,
+            'subcategory_id'=>SubCategory::select('id')->get()->random()->id,
             'price'=>rand(100,15000),
+            'description'=>$this->faker->sentence(),
             'color'=>$this->faker->sentence(),
         ];
     }

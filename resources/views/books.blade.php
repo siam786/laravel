@@ -29,6 +29,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $books->links() }}
     </div>
 </div>
 @endsection
