@@ -1,12 +1,14 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use App\Http\Controllers\FrontController;
+use App\Http\Controllers\Products;
 use App\Http\Controllers\SubCategory;
-use App\Http\Controllers\SubCategoryController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FrontController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\SubCategoryController;
 
 
 
@@ -93,3 +95,4 @@ Route::resource('/category', CategoryController::class);
 Route::resource('/subcategory',SubCategoryController::class);
 Route::get('/books',[FrontController::class,'books'])->name('books');
 Route::get('/nid',[FrontController::class,'nid']);
+Route::resource('/products',ProductsController::class);

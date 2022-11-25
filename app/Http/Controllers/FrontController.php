@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\User;
 use App\Models\NidCard;
+use App\Models\products;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
@@ -110,6 +111,10 @@ class FrontController extends Controller
     {
         $nid = NidCard::all();
         return $nid;
+    }
+    public function products(){
+        $products = products::all();
+        return $products;
     }
 
 }

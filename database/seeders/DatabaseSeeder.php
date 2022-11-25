@@ -14,6 +14,7 @@ use Database\Seeders\AuthorSeeder;
 use Database\Seeders\NidCardSeeder;
 use Database\Seeders\BookTypeSeeder;
 use Database\Seeders\CategorySeeder;
+use Database\Seeders\ProductsSeeder;
 use Database\Seeders\PublisherSeeder;
 use Database\Seeders\SubCategorySeeder;
 
@@ -57,7 +58,8 @@ class DatabaseSeeder extends Seeder
                 UserSeeder::class,
                 BookSeeder::class,
                 CategorySeeder::class,
-                SubCategorySeeder::class
+                SubCategorySeeder::class,
+                ProductsSeeder::class
             ]);
 
             $category= Category::factory(20)->create();
