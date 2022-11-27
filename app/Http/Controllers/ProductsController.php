@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\products;
 use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Models\SubCategory;
 
 class ProductsController extends Controller
 {
@@ -14,8 +16,15 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = products::all();
-        return response()->json($products);
+        $products = products::latest('id')->select(['id','name','slug','category_id','subcategory_id','description','price','color'])->paginate(10);
+
+        // $page = Category::latest('id')->select(['id','name','slug','created_at'])->paginate(10);
+        // dd($products);
+        // return response()->json($products);
+        $category = Category::select(['id','name'])->get();
+        $subcategory = SubCategory::select(['id','category_id','name'])->get();
+        return view('products',compact('products','category','subcategory'));
+        // return view('category.index', compact('page'));
         // return response()->json($categories);
     }
 
